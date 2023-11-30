@@ -4,26 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".gamescreen_page">
+    tools:context=".gamescreen_page"
+    android:background="@drawable/gamescreen_background">
+
     <ImageView
         android:id="@+id/ship"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="133dp"
-        android:layout_marginTop="244dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/daco_2352014" />
+
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/roundText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="game test ..."
-        android:textAlignment="center"
-        tools:layout_editor_absoluteX="174dp"
-        tools:layout_editor_absoluteY="352dp" />
+        android:fontFamily="@font/arcadeclassic_regular"
+        android:text="Round"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="23dp"
+        tools:layout_editor_absoluteY="22dp" />
+
+    <TextView
+        android:id="@+id/roundCounterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arcadeclassic_regular"
+        android:text="1"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        tools:layout_editor_absoluteX="124dp"
+        tools:layout_editor_absoluteY="22dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
