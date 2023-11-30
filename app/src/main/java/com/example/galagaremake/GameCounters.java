@@ -14,7 +14,7 @@ public class GameCounters {
     public int getLives(){
         return lives;
     }
-    
+
     public void decrementLives(){
         if (lives > 0){
             lives--;
