@@ -24,8 +24,9 @@ public class gamescreen_page extends AppCompatActivity {
     private TextView leftText;
     private int shipX;
     private int shipY;
-    private int score;
     private boolean startFlag = false;
+
+    private GameCounters gameCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,6 @@ public class gamescreen_page extends AppCompatActivity {
                 while (bullet.bulletY < 1000) {
                     bullet.move();
                 }
-
-
             }
         });
 
@@ -50,7 +49,11 @@ public class gamescreen_page extends AppCompatActivity {
         rightText = findViewById(R.id.rotationRightText);
         leftText = findViewById(R.id.rotationLeftText);
 
+        gameCounter = new GameCounters(0,1,0, this);
+
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+
         if (sensorManager != null) {
             rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
             rotationListener = new SensorEventListener() {
