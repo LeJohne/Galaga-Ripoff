@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.graphics.Rect;
 
 public class gamescreen_page extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class gamescreen_page extends AppCompatActivity {
     private int shipY;
     private int score;
     private boolean startFlag = false;
+    private Rect shipCollisionBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class gamescreen_page extends AppCompatActivity {
         shipImage = findViewById(R.id.ship);
         rightText = findViewById(R.id.rotationRightText);
         leftText = findViewById(R.id.rotationLeftText);
+
+        shipCollisionBox = new Rect(shipImage.getWidth(), shipImage.getHeight(), shipImage.getWidth(), shipImage.getHeight());
+        shipCollisionBox.set((int) shipImage.getX(), (int)shipImage.getY(), (int)shipImage.getX() + shipImage.getWidth(), (int)shipImage.getY() - shipImage.getHeight());
+
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
@@ -50,12 +56,14 @@ public class gamescreen_page extends AppCompatActivity {
                         // Move the ship left
                         shipX = shipX - 10;
                         shipImage.setX(shipX);
+                        shipCollisionBox.set((int) shipImage.getX(), (int)shipImage.getY(), (int)shipImage.getX() + shipImage.getWidth(), (int)shipImage.getY() - shipImage.getHeight());
                         leftText.setVisibility(View.VISIBLE);
                         rightText.setVisibility(View.INVISIBLE);
                     } else if (y > 0.5) {
                         // Move the ship right
                         shipX = shipX + 10;
                         shipImage.setX(shipX);
+                        shipCollisionBox.set((int) shipImage.getX(), (int)shipImage.getY(), (int)shipImage.getX() + shipImage.getWidth(), (int)shipImage.getY() - shipImage.getHeight());
                         rightText.setVisibility(View.VISIBLE);
                         leftText.setVisibility(View.INVISIBLE);
                     } else {
@@ -89,3 +97,7 @@ public class gamescreen_page extends AppCompatActivity {
         }
     }
 }
+
+
+
+
