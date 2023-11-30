@@ -51,9 +51,9 @@
         android:id="@+id/bullet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/btn_default"
-        tools:layout_editor_absoluteX="119dp"
-        tools:layout_editor_absoluteY="446dp" />
+        app:srcCompat="@drawable/bullet3"
+        tools:layout_editor_absoluteX="164dp"
+        tools:layout_editor_absoluteY="557dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

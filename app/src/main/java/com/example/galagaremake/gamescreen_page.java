@@ -2,6 +2,8 @@ package com.example.galagaremake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ValueAnimator;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -9,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.graphics.Rect;
@@ -36,16 +39,16 @@ public class gamescreen_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bulletImage = findViewById(R.id.bullet);
         setContentView(R.layout.activity_gamescreen_page);
 
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                bullet bullet = new bullet((ImageView) findViewById(R.id.bullet));
+                bullet Mybullet = new bullet((ImageView) findViewById(R.id.bullet));
+                Mybullet.move();
 
-                while (bullet.bulletY < 1000) {
-                    bullet.move();
-                }
+
 
 
             }
@@ -136,21 +139,43 @@ public class gamescreen_page extends AppCompatActivity {
         private ImageView bulletImage;
         private Rect bulletCollisionBox;
 
-        public bullet(ImageView bulletImage) {
-            this.bulletImage = bulletImage;
-            bulletX = (int)shipImage.getX() + (shipImage.getWidth() / 2);
-            bulletY = (int)shipImage.getY() - shipImage.getHeight();
-            bulletImage.setX(bulletX);
-            bulletImage.setY(bulletY);
-            bulletImage.setVisibility(View.VISIBLE);
-            bulletCollisionBox = new Rect(bulletImage.getWidth(), bulletImage.getHeight(), bulletImage.getWidth(), bulletImage.getHeight());
-            bulletCollisionBox.set((int) bulletImage.getX(), (int)bulletImage.getY(), (int)bulletImage.getX() + bulletImage.getWidth(), (int)bulletImage.getY() - bulletImage.getHeight());
+        public bullet(ImageView newbulletImage) {
+            //this.bulletImage = new ImageView(context);
+            this.bulletImage = newbulletImage;
+            //this.bulletImage.setImageResource(R.drawable.bullet3);
+            this.bulletX = (int)shipImage.getX() + (shipImage.getWidth() / 2);
+            this.bulletY = (int)shipImage.getY() - shipImage.getHeight();
+            this.bulletImage.setX(bulletX);
+            this.bulletImage.setY(bulletY);
+            this.bulletImage.setVisibility(View.VISIBLE);
+            this.bulletCollisionBox = new Rect(bulletImage.getWidth(), bulletImage.getHeight(), bulletImage.getWidth(), bulletImage.getHeight());
+            this.bulletCollisionBox.set((int) bulletImage.getX(), (int)bulletImage.getY(), (int)bulletImage.getX() + bulletImage.getWidth(), (int)bulletImage.getY() - bulletImage.getHeight());
         }
 
         public void move() {
-            bulletY = bulletY + 10;
-            bulletImage.setY(bulletY);
-            bulletCollisionBox.set((int) bulletImage.getX(), (int)bulletImage.getY(), (int)bulletImage.getX() + bulletImage.getWidth(), (int)bulletImage.getY() - bulletImage.getHeight());
+            rightText.setVisibility(View.VISIBLE);
+           leftText.setVisibility(View.VISIBLE);
+
+
+            //Make the bullet move up the screen over the duration of 5 seconds
+           /* while(bulletY > 0) {
+                bulletY -= 10;
+
+                bulletImage.setY(bulletY);
+                bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() - bulletImage.getHeight());
+            }*/
+            ValueAnimator animator = ValueAnimator.ofFloat(bulletY, 0); // Animate from current Y position to Y = 0 (top of the screen)
+            animator.setDuration(5000); // 5 seconds duration
+            animator.setInterpolator(new LinearInterpolator());
+            animator.addUpdateListener(animation -> {
+                float animatedValue = (float) animation.getAnimatedValue();
+                this.bulletImage.setY(animatedValue); // Update Y position of the bullet
+                // Update collision box or any other related calculations here
+
+                // Refresh the view
+                this.bulletImage.requestLayout();
+            });
+            animator.start();
         }
     }
 
