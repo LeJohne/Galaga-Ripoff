@@ -48,9 +48,6 @@ public class gamescreen_page extends AppCompatActivity {
                 bullet Mybullet = new bullet((ImageView) findViewById(R.id.bullet));
                 Mybullet.move();
 
-
-
-
             }
         });
 
