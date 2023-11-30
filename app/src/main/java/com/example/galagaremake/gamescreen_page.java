@@ -8,18 +8,27 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class gamescreen_page extends AppCompatActivity {
     //set up sensor manager to detect rotation
     private SensorManager sensorManager;
     private Sensor rotationVectorSensor;
     private SensorEventListener rotationListener;
+<<<<<<< Updated upstream
     //set up variables for rotation
     private float[] rotationMatrix = new float[9];
     private float[] rotationValues = new float[3];
     //set up variables for the ship
     private ImageView shipImage = (ImageView) findViewById(R.id.ship);
     //private ImageView ship;
+=======
+    private ImageView shipImage;
+
+    private TextView leftText;
+
+    private TextView rightText;
+>>>>>>> Stashed changes
     private int shipX;
     private int shipY;
     //set up variables for the bullet
@@ -58,9 +67,53 @@ public class gamescreen_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen_page);
 
+<<<<<<< Updated upstream
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
             rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+=======
+        // Initialize shipImage after setting the content view
+        shipImage = findViewById(R.id.ship);
+        leftText = findViewById(R.id.rotationLeftText);
+        rightText = findViewById(R.id.rotationRightText);
+
+
+        sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+        if (sensorManager != null) {
+            rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
+            rotationListener = new SensorEventListener() {
+                @Override
+                public void onSensorChanged(SensorEvent sensorEvent) {
+                    float x = sensorEvent.values[0];
+                    float y = sensorEvent.values[1];
+                    float z = sensorEvent.values[2];
+
+                    // Evaluate these values to determine if the phone is tilted left or right, in portrait mode
+                    if (y < -0.5) {
+                        // Move the ship left
+                        shipX = shipX - 10;
+                        shipImage.setX(shipX);
+                        rightText.setVisibility(TextView.INVISIBLE);
+                        leftText.setVisibility(TextView.VISIBLE);
+                    } else if (y > 0.5) {
+                        // Move the ship right
+                        shipX = shipX + 10;
+                        shipImage.setX(shipX);
+                        rightText.setVisibility(TextView.VISIBLE);
+                        leftText.setVisibility(TextView.INVISIBLE);
+                    } else {
+                        rightText.setVisibility(TextView.INVISIBLE);
+                        leftText.setVisibility(TextView.VISIBLE);
+                        // Keep the ship still
+                    }
+                }
+
+                @Override
+                public void onAccuracyChanged(Sensor sensor, int i) {
+                    // Do something if accuracy changes
+                }
+            };
+>>>>>>> Stashed changes
         }
     }
 
