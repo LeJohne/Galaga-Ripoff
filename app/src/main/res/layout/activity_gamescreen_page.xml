@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:id="@+id/gameScreenLayout"
     tools:context=".gamescreen_page">
     <ImageView
         android:id="@+id/ship"
@@ -44,6 +46,14 @@
         android:text="Right"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/bullet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/btn_default"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="446dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
