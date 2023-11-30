@@ -1,9 +1,9 @@
 package com.example.galagaremake;
 
-public class LivesCounter {
+public class Counters {
     private int lives;
 
-    public LivesCounter(int initialLives){
+    public Counters(int initialLives){
         this.lives = initialLives;
     }
 
