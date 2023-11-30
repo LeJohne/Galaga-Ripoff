@@ -46,19 +46,21 @@ public class gamescreen_page extends AppCompatActivity {
                     float z = sensorEvent.values[2];
 
                     // Evaluate these values to determine if the phone is tilted left or right, in portrait mode
-                    if (y < -0.5) {
+                    if (y < -0.01 && shipX > -75) {
                         // Move the ship left
-                        shipX = shipX - 10;
+                        shipX = shipX - 75;
                         shipImage.setX(shipX);
                         leftText.setVisibility(View.VISIBLE);
                         rightText.setVisibility(View.INVISIBLE);
-                    } else if (y > 0.5) {
+                    }
+                    if (y > 0.01) {
                         // Move the ship right
-                        shipX = shipX + 10;
+                        shipX = shipX + 75;
                         shipImage.setX(shipX);
                         rightText.setVisibility(View.VISIBLE);
                         leftText.setVisibility(View.INVISIBLE);
-                    } else {
+                    }
+                    if (y == 0) {
                         // Keep the ship still
                         rightText.setVisibility(View.INVISIBLE);
                         leftText.setVisibility(View.INVISIBLE);
