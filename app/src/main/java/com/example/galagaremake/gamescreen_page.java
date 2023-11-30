@@ -6,7 +6,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class gamescreen_page extends AppCompatActivity {
 
@@ -14,6 +16,10 @@ public class gamescreen_page extends AppCompatActivity {
     private Sensor rotationVectorSensor;
     private SensorEventListener rotationListener;
     private ImageView shipImage;
+
+    private TextView rightText;
+
+    private TextView leftText;
     private int shipX;
     private int shipY;
     private int score;
@@ -26,6 +32,8 @@ public class gamescreen_page extends AppCompatActivity {
 
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);
+        rightText = findViewById(R.id.rotationRightText);
+        leftText = findViewById(R.id.rotationLeftText);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
@@ -38,16 +46,22 @@ public class gamescreen_page extends AppCompatActivity {
                     float z = sensorEvent.values[2];
 
                     // Evaluate these values to determine if the phone is tilted left or right, in portrait mode
-                    if (x < -0.5) {
+                    if (y < -0.5) {
                         // Move the ship left
                         shipX = shipX - 10;
                         shipImage.setX(shipX);
-                    } else if (x > 0.5) {
+                        leftText.setVisibility(View.VISIBLE);
+                        rightText.setVisibility(View.INVISIBLE);
+                    } else if (y > 0.5) {
                         // Move the ship right
                         shipX = shipX + 10;
                         shipImage.setX(shipX);
+                        rightText.setVisibility(View.VISIBLE);
+                        leftText.setVisibility(View.INVISIBLE);
                     } else {
                         // Keep the ship still
+                        rightText.setVisibility(View.INVISIBLE);
+                        leftText.setVisibility(View.INVISIBLE);
                     }
                 }
 
