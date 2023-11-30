@@ -9,12 +9,38 @@
     android:focusable="true"
     android:id="@+id/gameScreenLayout">
 
+    <TextView
+        android:id="@+id/livesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/arcadeclassic_regular"
+        android:text="Lives"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/livesCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginBottom="6dp"
+        android:fontFamily="@font/arcadeclassic_regular"
+        android:text="3"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/ship"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginBottom="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/daco_2352014" />
@@ -26,12 +52,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="9dp"
-        android:layout_marginBottom="672dp"
         android:fontFamily="@font/arcadeclassic_regular"
         android:text="Round"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/roundCounter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,12 +66,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="556dp"
         android:fontFamily="@font/arcadeclassic_regular"
         android:text="1"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/ship"
         app:layout_constraintStart_toEndOf="@+id/roundText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -58,12 +80,10 @@
         android:layout_marginStart="208dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="110dp"
-        android:layout_marginBottom="556dp"
         android:fontFamily="@font/arcadeclassic_regular"
         android:text="Score"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/ship"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,14 +92,13 @@
         android:id="@+id/scoreCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
+        android:layout_marginStart="308dp"
         android:layout_marginTop="24dp"
-        android:layout_marginBottom="672dp"
         android:fontFamily="@font/arcadeclassic_regular"
-        android:text="1000"
+        android:text="00000"
+        android:textAlignment="textEnd"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

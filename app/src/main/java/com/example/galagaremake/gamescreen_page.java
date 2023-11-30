@@ -36,6 +36,11 @@ public class gamescreen_page extends AppCompatActivity {
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+
+//                gameCounter.decrementLives(); // Decrease the lives
+//                gameCounter.incrementRounds(); // Increment the round
+//                gameCounter.incrementScore(1000);  // Increment the score 100
+
                 bullet bullet = new bullet((ImageView) findViewById(R.id.bullet));
 
                 while (bullet.bulletY < 1000) {
@@ -49,7 +54,7 @@ public class gamescreen_page extends AppCompatActivity {
         rightText = findViewById(R.id.rotationRightText);
         leftText = findViewById(R.id.rotationLeftText);
 
-        gameCounter = new GameCounters(0,1,0, this);
+        gameCounter = new GameCounters(3,1,0, this);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
@@ -85,6 +90,8 @@ public class gamescreen_page extends AppCompatActivity {
                         rightText.setVisibility(View.INVISIBLE);
                         leftText.setVisibility(View.INVISIBLE);
                     }
+
+
                 }
 
                 @Override
