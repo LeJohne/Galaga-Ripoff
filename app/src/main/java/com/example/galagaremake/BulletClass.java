@@ -1,5 +1,7 @@
 package com.example.galagaremake;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.view.View;
@@ -49,6 +51,14 @@ public class BulletClass {
             // Refresh the view
             this.bulletImage.requestLayout();
         });
+        animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                bulletImage.setVisibility(View.INVISIBLE);
+            }
+        });
         animator.start();
+
     }
+
 }

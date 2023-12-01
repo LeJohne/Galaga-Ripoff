@@ -128,7 +128,7 @@ public class gamescreen_page extends AppCompatActivity {
             enemyImage.setY(enemyY);
             enemyImage.setVisibility(View.VISIBLE);
             enemyCollisionBox = new Rect(enemyImage.getWidth(), enemyImage.getHeight(), enemyImage.getWidth(), enemyImage.getHeight());
-            enemyCollisionBox.set((int) enemyImage.getX(), (int)enemyImage.getY(), (int)enemyImage.getX() + enemyImage.getWidth(), (int)enemyImage.getY() - enemyImage.getHeight());
+            enemyCollisionBox.set((int) enemyImage.getX(), (int)enemyImage.getY(), (int)enemyImage.getX() + enemyImage.getWidth(), (int)enemyImage.getY() + enemyImage.getHeight());
         }
 
         public void move() {
