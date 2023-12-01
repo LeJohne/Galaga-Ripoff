@@ -91,7 +91,8 @@ public class gamescreen_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
-                bullet.move(rightText, leftText);
+                int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
+                bullet.move(rightText, leftText, screenHeight);
             }
         });
 
