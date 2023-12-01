@@ -2,13 +2,16 @@ package com.example.galagaremake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,27 +30,14 @@ public class gamescreen_page extends AppCompatActivity {
     private boolean startFlag = false;
 
     private GameCounters gameCounter;
+    public ImageView bulletImage;
+    private BulletClass bullet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bulletImage = findViewById(R.id.bullet);
         setContentView(R.layout.activity_gamescreen_page);
-
-        findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-
-//                gameCounter.decrementLives(); // Decrease the lives
-//                gameCounter.incrementRounds(); // Increment the round
-//                gameCounter.incrementScore(1000);  // Increment the score 100
-
-                bullet bullet = new bullet((ImageView) findViewById(R.id.bullet));
-
-                while (bullet.bulletY < 1000) {
-                    bullet.move();
-                }
-            }
-        });
 
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);
@@ -57,7 +47,6 @@ public class gamescreen_page extends AppCompatActivity {
         gameCounter = new GameCounters(3,1,0, this);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-
 
         if (sensorManager != null) {
             rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
@@ -90,16 +79,22 @@ public class gamescreen_page extends AppCompatActivity {
                         rightText.setVisibility(View.INVISIBLE);
                         leftText.setVisibility(View.INVISIBLE);
                     }
-
-
                 }
-
                 @Override
                 public void onAccuracyChanged(Sensor sensor, int i) {
                     // Do something if accuracy changes
                 }
             };
         }
+
+        findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
+                bullet.move(rightText, leftText);
+            }
+        });
+
     }
 
     @Override
@@ -118,37 +113,6 @@ public class gamescreen_page extends AppCompatActivity {
         }
     }
 
-    //create a bullet class that will create a new imageview
-    //and move it up the screen until it hits the top of the screen
-    //or hits an enemy
-    //if it hits an enemy, remove the enemy and the bullet
-    //if it hits the top of the screen, remove the bullet
-    //if it hits nothing, keep moving it up the screen
-    //create a new bullet when the user taps the screen
-
-    public class bullet {
-        private int bulletX;
-        private int bulletY;
-        private ImageView bulletImage;
-        private Rect bulletCollisionBox;
-
-        public bullet(ImageView bulletImage) {
-            this.bulletImage = bulletImage;
-            bulletX = (int)shipImage.getX() + (shipImage.getWidth() / 2);
-            bulletY = (int)shipImage.getY() - shipImage.getHeight();
-            bulletImage.setX(bulletX);
-            bulletImage.setY(bulletY);
-            bulletImage.setVisibility(View.VISIBLE);
-            bulletCollisionBox = new Rect(bulletImage.getWidth(), bulletImage.getHeight(), bulletImage.getWidth(), bulletImage.getHeight());
-            bulletCollisionBox.set((int) bulletImage.getX(), (int)bulletImage.getY(), (int)bulletImage.getX() + bulletImage.getWidth(), (int)bulletImage.getY() - bulletImage.getHeight());
-        }
-
-        public void move() {
-            bulletY = bulletY + 10;
-            bulletImage.setY(bulletY);
-            bulletCollisionBox.set((int) bulletImage.getX(), (int)bulletImage.getY(), (int)bulletImage.getX() + bulletImage.getWidth(), (int)bulletImage.getY() - bulletImage.getHeight());
-        }
-    }
 
     public class enemy {
         private int enemyX;
