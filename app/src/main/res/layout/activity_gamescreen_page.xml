@@ -131,4 +131,14 @@
         tools:layout_editor_absoluteX="119dp"
         tools:layout_editor_absoluteY="446dp" />
 
+    <ImageView
+        android:id="@+id/enemy1"
+        android:layout_width="100dp"
+        android:layout_height="106dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/rotationRightText"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

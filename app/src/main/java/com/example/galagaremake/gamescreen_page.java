@@ -31,7 +31,11 @@ public class gamescreen_page extends AppCompatActivity {
 
     private GameCounters gameCounter;
     public ImageView bulletImage;
+
+    public ImageView enemy1Image;
     private BulletClass bullet;
+
+    private EnemyClass Myenemy1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,8 +95,9 @@ public class gamescreen_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
+                Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1));
                 int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-                bullet.move(rightText, leftText, screenHeight);
+                bullet.move(rightText, leftText, screenHeight, Myenemy1);
             }
         });
 
@@ -115,31 +120,5 @@ public class gamescreen_page extends AppCompatActivity {
     }
 
 
-    public class enemy {
-        private int enemyX;
-        private int enemyY;
-        private ImageView enemyImage;
-        private Rect enemyCollisionBox;
 
-        public enemy(ImageView enemyImage) {
-            this.enemyImage = enemyImage;
-            enemyX = (int)enemyImage.getX();
-            enemyY = (int)enemyImage.getY();
-            enemyImage.setX(enemyX);
-            enemyImage.setY(enemyY);
-            enemyImage.setVisibility(View.VISIBLE);
-            enemyCollisionBox = new Rect(enemyImage.getWidth(), enemyImage.getHeight(), enemyImage.getWidth(), enemyImage.getHeight());
-            enemyCollisionBox.set((int) enemyImage.getX(), (int)enemyImage.getY(), (int)enemyImage.getX() + enemyImage.getWidth(), (int)enemyImage.getY() + enemyImage.getHeight());
-        }
-
-        public void move() {
-            enemyY = enemyY + 10;
-            enemyImage.setY(enemyY);
-            enemyCollisionBox.set((int) enemyImage.getX(), (int)enemyImage.getY(), (int)enemyImage.getX() + enemyImage.getWidth(), (int)enemyImage.getY() - enemyImage.getHeight());
-        }
-
-        public void remove() {
-            enemyImage.setVisibility(View.INVISIBLE);
-        }
-    }
 }
