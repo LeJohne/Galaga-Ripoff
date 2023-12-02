@@ -67,7 +67,7 @@ public class BulletClass extends AppCompatActivity {
                 // Refresh the view
                 if (intersects(this.bulletCollisionBox, myenemy.enemyCollisionBox)) {
                     Log.d("YES", "WHOO");
-                    myenemy.remove();
+                    myenemy.removeWithExplosion();
                     this.bulletImage.setVisibility(View.GONE);
                     //endAnimation.set(true);
                 }
