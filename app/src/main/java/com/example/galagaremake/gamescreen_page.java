@@ -34,6 +34,15 @@ public class gamescreen_page extends AppCompatActivity {
     private BulletClass bullet;
 
     private EnemyClass Myenemy1;
+    private EnemyClass Myenemy2;
+    private EnemyClass Myenemy3;
+    private EnemyClass Myenemy4;
+    private EnemyClass Myenemy5;
+    private EnemyClass Myenemy6;
+    private EnemyClass Myenemy7;
+    private EnemyClass Myenemy8;
+    private EnemyClass Myenemy9;
+    private EnemyClass Myenemy10;
 
     private EnemyClass[] enemyArray = new EnemyClass[10];
 
@@ -96,7 +105,26 @@ public class gamescreen_page extends AppCompatActivity {
             public void onClick(View view) {
                 bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
                 Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1));
+                Myenemy2 = new EnemyClass((ImageView) findViewById(R.id.enemy2));
+                Myenemy3 = new EnemyClass((ImageView) findViewById(R.id.enemy3));
+                Myenemy4 = new EnemyClass((ImageView) findViewById(R.id.enemy4));
+                Myenemy5 = new EnemyClass((ImageView) findViewById(R.id.enemy5));
+                Myenemy6 = new EnemyClass((ImageView) findViewById(R.id.enemy6));
+                Myenemy7 = new EnemyClass((ImageView) findViewById(R.id.enemy7));
+                Myenemy8 = new EnemyClass((ImageView) findViewById(R.id.enemy8));
+                Myenemy9 = new EnemyClass((ImageView) findViewById(R.id.enemy9));
+                Myenemy10 = new EnemyClass((ImageView) findViewById(R.id.enemy10));
+
                 enemyArray[0] = Myenemy1;
+                enemyArray[1] = Myenemy2;
+                enemyArray[2] = Myenemy3;
+                enemyArray[3] = Myenemy4;
+                enemyArray[4] = Myenemy5;
+                enemyArray[5] = Myenemy6;
+                enemyArray[6] = Myenemy7;
+                enemyArray[7] = Myenemy8;
+                enemyArray[8] = Myenemy9;
+                enemyArray[9] = Myenemy10;
                 int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
                 bullet.move(screenHeight, enemyArray);
             }
@@ -105,7 +133,16 @@ public class gamescreen_page extends AppCompatActivity {
     }
 
     private void createEnemies() {
-
+        enemyArray[0] = new EnemyClass((ImageView) findViewById(R.id.enemy1));
+        enemyArray[1] = new EnemyClass((ImageView) findViewById(R.id.enemy2));
+        enemyArray[2] = new EnemyClass((ImageView) findViewById(R.id.enemy3));
+        enemyArray[3] = new EnemyClass((ImageView) findViewById(R.id.enemy4));
+        enemyArray[4] = new EnemyClass((ImageView) findViewById(R.id.enemy5));
+        enemyArray[5] = new EnemyClass((ImageView) findViewById(R.id.enemy6));
+        enemyArray[6] = new EnemyClass((ImageView) findViewById(R.id.enemy7));
+        enemyArray[7] = new EnemyClass((ImageView) findViewById(R.id.enemy8));
+        enemyArray[8] = new EnemyClass((ImageView) findViewById(R.id.enemy9));
+        enemyArray[9] = new EnemyClass((ImageView) findViewById(R.id.enemy10));
     }
 
     @Override
