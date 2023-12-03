@@ -41,16 +41,16 @@ public class BulletClass extends AppCompatActivity {
         this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
     }
 
-    public void move(TextView rightText, TextView leftText, int screenHeight, EnemyClass myenemy) {
-        rightText.setVisibility(View.VISIBLE);
-        leftText.setVisibility(View.VISIBLE);
+    public void move(int screenHeight, EnemyClass[] enemyArray) {
+        //rightText.setVisibility(View.VISIBLE);
+        //leftText.setVisibility(View.VISIBLE);
         //int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
 
         // Make the bullet move up the screen over the duration of 5 seconds
         int i = 0;
-        Log.d("mymessageE",String.valueOf(myenemy.enemyY));
+        //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
         AtomicBoolean endAnimation = new AtomicBoolean(false);
-        while((i < (screenHeight/20)) && !intersects(this.bulletCollisionBox, myenemy.enemyCollisionBox) && !endAnimation.get()) {
+        while((i < (screenHeight/20)) && !endAnimation.get()) {
             Log.d("mymessageB", String.valueOf(bulletY));
 
 
@@ -65,12 +65,17 @@ public class BulletClass extends AppCompatActivity {
                 // Update collision box
                 this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
                 // Refresh the view
-                if (intersects(this.bulletCollisionBox, myenemy.enemyCollisionBox)) {
-                    Log.d("YES", "WHOO");
-                    myenemy.removeWithExplosion();
-                    this.bulletImage.setVisibility(View.GONE);
-                    //endAnimation.set(true);
+                for (int k = 0; k < enemyArray.length; k++) {
+                    if (enemyArray[k] != null) {
+                        if (intersects(this.bulletCollisionBox, enemyArray[k].enemyCollisionBox)) {
+                            Log.d("YES", "WHOO");
+                            enemyArray[k].removeWithExplosion();
+                            this.bulletImage.setVisibility(View.GONE);
+                            endAnimation.set(true);
+                        }
+                    }
                 }
+
                 this.bulletImage.requestLayout();
 
             });

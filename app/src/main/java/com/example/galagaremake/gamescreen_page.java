@@ -22,9 +22,7 @@ public class gamescreen_page extends AppCompatActivity {
     private SensorEventListener rotationListener;
     private ImageView shipImage;
 
-    private TextView rightText;
 
-    private TextView leftText;
     private int shipX;
     private int shipY;
     private boolean startFlag = false;
@@ -37,6 +35,8 @@ public class gamescreen_page extends AppCompatActivity {
 
     private EnemyClass Myenemy1;
 
+    private EnemyClass[] enemyArray = new EnemyClass[10];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,9 +45,9 @@ public class gamescreen_page extends AppCompatActivity {
 
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);
-        rightText = findViewById(R.id.rotationRightText);
-        leftText = findViewById(R.id.rotationLeftText);
-
+        //rightText = findViewById(R.id.rotationRightText);
+        //leftText = findViewById(R.id.rotationLeftText);
+        createEnemies();
         gameCounter = new GameCounters(3,1,0, this);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -68,20 +68,20 @@ public class gamescreen_page extends AppCompatActivity {
                         // Move the ship left
                         shipX = shipX - 75;
                         shipImage.setX(shipX);
-                        leftText.setVisibility(View.VISIBLE);
-                        rightText.setVisibility(View.INVISIBLE);
+                        //leftText.setVisibility(View.VISIBLE);
+                        //rightText.setVisibility(View.INVISIBLE);
                     }
                     if (y > 0.01 && shipX < screenWidth - shipImage.getWidth()) {
                         // Move the ship right
                         shipX = shipX + 75;
                         shipImage.setX(shipX);
-                        rightText.setVisibility(View.VISIBLE);
-                        leftText.setVisibility(View.INVISIBLE);
+                        //rightText.setVisibility(View.VISIBLE);
+                        //leftText.setVisibility(View.INVISIBLE);
                     }
                     if (y == 0) {
                         // Keep the ship still
-                        rightText.setVisibility(View.INVISIBLE);
-                        leftText.setVisibility(View.INVISIBLE);
+                        //rightText.setVisibility(View.INVISIBLE);
+                        //leftText.setVisibility(View.INVISIBLE);
                     }
                 }
                 @Override
@@ -96,10 +96,15 @@ public class gamescreen_page extends AppCompatActivity {
             public void onClick(View view) {
                 bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
                 Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1));
+                enemyArray[0] = Myenemy1;
                 int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-                bullet.move(rightText, leftText, screenHeight, Myenemy1);
+                bullet.move(screenHeight, enemyArray);
             }
         });
+
+    }
+
+    private void createEnemies() {
 
     }
 

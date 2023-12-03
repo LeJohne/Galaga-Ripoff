@@ -102,26 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/rotationLeftText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="189dp"
-        android:text="Left"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/rotationRightText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="74dp"
-        android:layout_marginEnd="21dp"
-        android:text="Right"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/bullet"
         android:layout_width="wrap_content"
@@ -133,11 +113,101 @@
 
     <ImageView
         android:id="@+id/enemy1"
-        android:layout_width="100dp"
-        android:layout_height="106dp"
-        android:layout_marginStart="120dp"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="174dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/rotationRightText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy10"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy2"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy3"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy4"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy5"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy6"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy7"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy8"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreText"
+        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+
+    <ImageView
+        android:id="@+id/enemy9"
+        android:layout_width="63dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
         app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
 
