@@ -10,13 +10,16 @@ public class ShipClass {
     private int shipX;
     private int shipY;
 
-    private Rect shipCollisionBox;
-    ShipClass(ImageView shipImage){
+    public Rect shipCollisionBox;
+    GameCounters gameCounter;
+    ShipClass(ImageView shipImage, GameCounters gameCounter) {
+        this.gameCounter = gameCounter;
         this.shipImage = shipImage;
         shipX = (int) shipImage.getX();
         shipY = (int) shipImage.getY();
         shipCollisionBox = new Rect(shipImage.getWidth(), shipImage.getHeight(), shipImage.getWidth(), shipImage.getHeight());
         shipCollisionBox.set((int) shipImage.getX(), (int) shipImage.getY(), (int) shipImage.getX() + shipImage.getWidth(), (int) shipImage.getY() + shipImage.getHeight());
+
     }
 
     public Rect getShipCollisionBox() {
@@ -31,6 +34,8 @@ public class ShipClass {
                 shipImage.setVisibility(View.GONE);
             }
         }, getExplosionDuration());
+
+        gameCounter.decrementLives();
     }
 
     private void playExplosionAnimation() {
@@ -70,6 +75,6 @@ public class ShipClass {
             //rightText.setVisibility(View.INVISIBLE);
             //leftText.setVisibility(View.INVISIBLE);
         }
-
+        shipCollisionBox.set((int) shipImage.getX(), (int) shipImage.getY(), (int) shipImage.getX() + shipImage.getWidth(), (int) shipImage.getY() + shipImage.getHeight());
     }
 }

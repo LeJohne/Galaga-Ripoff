@@ -18,10 +18,10 @@ import java.util.TimerTask;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EnemyClass {
-    private int enemyX;
+    public int enemyX;
     public int enemyY;
 
-    private float bulletY;
+
     private ImageView enemyImage;
     public Rect enemyCollisionBox;
 
@@ -31,18 +31,20 @@ public class EnemyClass {
 
     int screenHeight;
 
-    private EnemyBulletClass myBullet;
+    public EnemyBulletClass myBullet;
 
-    public EnemyClass(ImageView enemyImage,int myHeight, ShipClass ship, ImageView bulletImage) {
+    public int timesRun = 0;
+
+    GameCounters gamecounter;
+
+    public EnemyClass(ImageView enemyImage,int myHeight, ShipClass ship, ImageView bulletImage, GameCounters gameCounter) {
         this.enemyImage = enemyImage;
         this.screenHeight = myHeight;
         this.BulletImage = bulletImage;
+        this.gamecounter = gameCounter;;
         this.myBullet = new EnemyBulletClass(BulletImage,this.enemyImage);
         enemyX = (int) enemyImage.getX();
         enemyY = (int) enemyImage.getY();
-        bulletY = enemyY;
-        enemyImage.setX(enemyX);
-        enemyImage.setY(enemyY);
         enemyImage.setVisibility(View.VISIBLE);
         enemyCollisionBox = new Rect(enemyImage.getWidth(), enemyImage.getHeight(), enemyImage.getWidth(), enemyImage.getHeight());
         enemyCollisionBox.set((int) enemyImage.getX(), (int) enemyImage.getY(), (int) enemyImage.getX() + enemyImage.getWidth(), (int) enemyImage.getY() + enemyImage.getHeight());
@@ -52,16 +54,6 @@ public class EnemyClass {
 //                EnemyBulletClass.move(screenHeight,ship);
 //            }
 //        }, 0, 1000);//put here time 1000 milliseconds=1 second
-        final Handler handler = new Handler();
-        final int delay = 5000; // 1000 milliseconds == 1 second
-
-        handler.postDelayed(new Runnable() {
-            public void run() {
-                Log.d("AH", "YESSIR");
-                myBullet.shoot(screenHeight,ship);
-                handler.postDelayed(this, delay);
-            }
-        }, delay);
 
 
     }
@@ -86,6 +78,10 @@ public class EnemyClass {
                 enemyImage.setVisibility(View.GONE);
             }
         }, getExplosionDuration());
+
+        enemyCollisionBox.setEmpty();
+        gamecounter.incrementScore(500);
+        gamecounter.decrementEnemies();
     }
 
     private void playExplosionAnimation() {

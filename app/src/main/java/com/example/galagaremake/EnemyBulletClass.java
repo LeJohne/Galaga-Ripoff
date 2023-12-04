@@ -38,9 +38,10 @@ public class EnemyBulletClass extends AppCompatActivity {
         this.EnemyImage = enemyImage;
         this.bulletX = (int) enemyImage.getX() + (EnemyImage.getWidth() / 2);
         this.bulletY = (int) enemyImage.getY() - EnemyImage.getHeight();
+
         this.bulletImage.setX(bulletX);
         this.bulletImage.setY(bulletY);
-        this.bulletImage.setVisibility(View.INVISIBLE);
+        //this.bulletImage.setVisibility(View.INVISIBLE);
         this.bulletCollisionBox = new Rect(bulletImage.getWidth(), bulletImage.getHeight(), bulletImage.getWidth(), bulletImage.getHeight());
         this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
     }
@@ -51,6 +52,12 @@ public class EnemyBulletClass extends AppCompatActivity {
         //int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
 
         // Make the bullet move up the screen over the duration of 5 seconds
+        this.bulletX = (int) this.EnemyImage.getX() + (EnemyImage.getWidth() / 2);
+
+        Log.d("bulletXA", String.valueOf(bulletX));
+        this.bulletY = (int) this.EnemyImage.getY() + EnemyImage.getHeight();
+        this.bulletImage.setX(bulletX);
+        this.bulletImage.setY(bulletY);
         this.bulletImage.setVisibility(View.VISIBLE);
         int i = 0;
         //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
@@ -60,20 +67,23 @@ public class EnemyBulletClass extends AppCompatActivity {
 
 
 
-            ValueAnimator animator = ValueAnimator.ofFloat(bulletY, (i*20));
-            animator.setDuration(300);
-            animator.setInterpolator(new LinearInterpolator());
-            animator.addUpdateListener(animation -> {
+            ValueAnimator animator1 = ValueAnimator.ofFloat(bulletY, (i*20));
+            animator1.setDuration(300);
+            animator1.setInterpolator(new LinearInterpolator());
+            animator1.addUpdateListener(animation -> {
                 float animatedValue = (float) animation.getAnimatedValue();
                 bulletY = animatedValue;
                 this.bulletImage.setY(bulletY);
-                Log.d("mymessageU", String.valueOf(bulletY));
+                Log.d("bulletY",String.valueOf(bulletY));
+                Log.d("bulletX",String.valueOf(bulletX));
+
                 // Update collision box
-                this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                //this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                //this.bulletCollisionBox.set(-999999999,99999999999,9999999999,-999999999)
                 // Refresh the view
 
                         if (intersects(this.bulletCollisionBox, ship.getShipCollisionBox())) {
-                            Log.d("YES", "WHOO");
+                            Log.d("COLLISION", "WHOO");
                             ship.removeWithExplosion();
                             this.bulletImage.setVisibility(View.GONE);
                             endAnimation.set(true);
@@ -85,18 +95,17 @@ public class EnemyBulletClass extends AppCompatActivity {
 
             });
 
-            animator.addListener(new AnimatorListenerAdapter() {
+            animator1.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
                     //bulletImage.setVisibility(View.INVISIBLE);
                     Log.d("mymessageO",String.valueOf(bulletY));
                 }
             });
-            animator.start();
+            animator1.start();
             i++;
         }
-        this.bulletImage.setY(10000);
-        this.bulletImage.setX(500);
+
         this.bulletImage.requestLayout();
         Log.d("mymessageFINAL",String.valueOf(bulletImage.getY()));
     /*

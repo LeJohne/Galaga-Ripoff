@@ -11,14 +11,17 @@ public class GameCounters {
     private int round;
     private int score;
 
+    private int enemies;
+
     private TextView livesCounterTextView;
     private TextView roundCounterTextView;
     private TextView scoreCounterTextView;
 
-    public GameCounters(int initialLives, int initialRounds, int initialScore, Context context){
+    public GameCounters(int initialLives, int initialRounds, int initialScore, int initialEnemies, Context context){
         this.lives = initialLives;
         this.round = initialRounds;
         this.score = initialScore;
+        this.enemies = initialEnemies;
 
         this.livesCounterTextView = ((Activity) context).findViewById(R.id.livesCounter);
         this.roundCounterTextView = ((Activity) context).findViewById(R.id.roundCounter);
@@ -54,6 +57,16 @@ public class GameCounters {
         updateScoreCounterTextView();
     }
 
+    public void decrementEnemies() {
+        enemies--;
+        if (enemies == 0) {
+            incrementRounds();
+        }
+    }
+    public int getEnemies() {
+        return enemies;
+    }
+
     private void updateLivesCounterTextView() {
         if (livesCounterTextView != null) {
             livesCounterTextView.setText(String.valueOf(lives));
@@ -72,5 +85,6 @@ public class GameCounters {
             scoreCounterTextView.setText(String.valueOf(score));
         }
     }
+
 }
 

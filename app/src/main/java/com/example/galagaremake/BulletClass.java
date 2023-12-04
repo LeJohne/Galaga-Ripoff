@@ -50,7 +50,8 @@ public class BulletClass extends AppCompatActivity {
         int i = 0;
         //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
         AtomicBoolean endAnimation = new AtomicBoolean(false);
-        while((i < (screenHeight/20)) && !endAnimation.get()) {
+        Log.d("started","started");
+        while((i < ((screenHeight/20)) + 10) && !endAnimation.get()) {
             Log.d("mymessageB", String.valueOf(bulletY));
 
 
