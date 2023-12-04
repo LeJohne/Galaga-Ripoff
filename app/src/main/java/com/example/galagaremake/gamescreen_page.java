@@ -154,7 +154,7 @@ public class gamescreen_page extends AppCompatActivity {
                                 int myIndex;
                                 do {
                                     myIndex = r.nextInt(10);
-                                } while(enemyArray[myIndex] == null);
+                                } while(!enemyArray[myIndex].isReal());
                                 enemyArray[myIndex].myBullet.shoot(screenHeight, ship);
 
                                 handler.postDelayed(this, delay);

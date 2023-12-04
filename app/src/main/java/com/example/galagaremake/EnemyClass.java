@@ -33,6 +33,8 @@ public class EnemyClass {
 
     public EnemyBulletClass myBullet;
 
+    private boolean isReal;
+
     public int timesRun = 0;
 
     GameCounters gamecounter;
@@ -41,7 +43,8 @@ public class EnemyClass {
         this.enemyImage = enemyImage;
         this.screenHeight = myHeight;
         this.BulletImage = bulletImage;
-        this.gamecounter = gameCounter;;
+        this.gamecounter = gameCounter;
+        isReal = true;
         this.myBullet = new EnemyBulletClass(BulletImage,this.enemyImage, this.gamecounter);
         enemyX = (int) enemyImage.getX();
         enemyY = (int) enemyImage.getY();
@@ -69,7 +72,9 @@ public class EnemyClass {
         enemyImage.setVisibility(View.GONE);
 
     }
-
+    public boolean isReal() {
+        return isReal;
+    }
     public void removeWithExplosion() {
         playExplosionAnimation();
         enemyImage.postDelayed(new Runnable() {
@@ -82,7 +87,7 @@ public class EnemyClass {
         enemyCollisionBox.setEmpty();
         gamecounter.incrementScore(500);
         gamecounter.decrementEnemies();
-
+        isReal = false;
     }
 
     private void playExplosionAnimation() {
