@@ -145,6 +145,7 @@ public class gamescreen_page extends AppCompatActivity {
                             if (gameCounter.isGameOver()) {
                                 //stop this class from ever running again
                                 handler.removeCallbacks(this);
+                                handler.removeCallbacksAndMessages(null);
                                 finish();
                             }
                             if(alreadyRan && !gameCounter.isGameOver()) {
