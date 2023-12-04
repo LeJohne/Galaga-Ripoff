@@ -30,10 +30,10 @@ public class BulletClass extends AppCompatActivity {
     //if it hits nothing, keep moving it up the screen
     //create a new bullet when the user taps the screen
 
-    public BulletClass(ImageView newBulletImage, ImageView shipImage) {
+    public BulletClass(ImageView newBulletImage, ShipClass ship) {
         this.bulletImage = newBulletImage;
-        this.bulletX = (int) shipImage.getX() + (shipImage.getWidth() / 2);
-        this.bulletY = (int) shipImage.getY() - shipImage.getHeight();
+        this.bulletX = (int) ship.getX() + (ship.getWidth() / 2);
+        this.bulletY = (int) ship.getY() - ship.getHeight();
         this.bulletImage.setX(bulletX);
         this.bulletImage.setY(bulletY);
         this.bulletImage.setVisibility(View.VISIBLE);
@@ -91,8 +91,7 @@ public class BulletClass extends AppCompatActivity {
             animator.start();
             i++;
         }
-        this.bulletImage.setY(10000);
-        this.bulletImage.setX(500);
+
         this.bulletImage.requestLayout();
         Log.d("mymessageFINAL",String.valueOf(bulletImage.getY()));
     /*

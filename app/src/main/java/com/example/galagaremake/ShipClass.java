@@ -6,12 +6,12 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class ShipClass {
-    private ImageView shipImage;
+    public ImageView shipImage;
     private int shipX;
     private int shipY;
 
     public Rect shipCollisionBox;
-    GameCounters gameCounter;
+    private GameCounters gameCounter;
     ShipClass(ImageView shipImage, GameCounters gameCounter) {
         this.gameCounter = gameCounter;
         this.shipImage = shipImage;
@@ -19,11 +19,27 @@ public class ShipClass {
         shipY = (int) shipImage.getY();
         shipCollisionBox = new Rect(shipImage.getWidth(), shipImage.getHeight(), shipImage.getWidth(), shipImage.getHeight());
         shipCollisionBox.set((int) shipImage.getX(), (int) shipImage.getY(), (int) shipImage.getX() + shipImage.getWidth(), (int) shipImage.getY() + shipImage.getHeight());
-
+        //shipCollisionBox.set(-999999,999999,9999999,-9999999);
     }
 
     public Rect getShipCollisionBox() {
         return shipCollisionBox;
+    }
+
+    public float getX() {
+        return shipX;
+    }
+
+    public float getY() {
+        return shipY;
+    }
+
+    public int getWidth() {
+        return shipImage.getWidth();
+    }
+
+    public int getHeight() {
+        return shipImage.getHeight();
     }
 
     public void removeWithExplosion() {

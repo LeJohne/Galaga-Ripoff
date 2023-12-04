@@ -76,7 +76,7 @@ public class gamescreen_page extends AppCompatActivity {
 
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);
-        ship = new ShipClass(shipImage, gameCounter);
+
         //rightText = findViewById(R.id.rotationRightText);
         //leftText = findViewById(R.id.rotationLeftText);
         //createEnemies();
@@ -84,7 +84,7 @@ public class gamescreen_page extends AppCompatActivity {
 
 
         gameCounter = new GameCounters(3,1,0, 10, this);
-
+        ship = new ShipClass(shipImage, gameCounter);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         if (sensorManager != null) {
@@ -111,9 +111,9 @@ public class gamescreen_page extends AppCompatActivity {
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                     gameCounter.decrementLives();
+                     //gameCounter.decrementLives();
 
-                    bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
+                     bullet = new BulletClass((ImageView) findViewById(R.id.bullet), ship);
                 if (!alreadyRan) {
                     Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet1), gameCounter);
                     Myenemy2 = new EnemyClass((ImageView) findViewById(R.id.enemy2), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet2), gameCounter);
@@ -144,7 +144,10 @@ public class gamescreen_page extends AppCompatActivity {
                         public void run() {
                             if(alreadyRan) {
                                 Log.d("RANIT","RAN");
-                                int myIndex = r.nextInt(10);
+                                int myIndex;
+                                do {
+                                    myIndex = r.nextInt(10);
+                                } while(enemyArray[myIndex] == null);
                                 enemyArray[myIndex].myBullet.shoot(screenHeight, ship);
 
                                 handler.postDelayed(this, delay);

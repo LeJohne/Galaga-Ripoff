@@ -18,7 +18,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class EnemyBulletClass extends AppCompatActivity {
 
     private float bulletX;
-    private static float bulletY;
+    private float bulletY;
 
     private ImageView EnemyImage;
     private float enemyY;
@@ -78,11 +78,11 @@ public class EnemyBulletClass extends AppCompatActivity {
                 Log.d("bulletX",String.valueOf(bulletX));
 
                 // Update collision box
-                //this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
                 //this.bulletCollisionBox.set(-999999999,99999999999,9999999999,-999999999)
                 // Refresh the view
 
-                        if (intersects(this.bulletCollisionBox, ship.getShipCollisionBox())) {
+                        if (intersects(this.bulletCollisionBox, ship.shipCollisionBox)) {
                             Log.d("COLLISION", "WHOO");
                             ship.removeWithExplosion();
                             this.bulletImage.setVisibility(View.GONE);

@@ -82,6 +82,7 @@ public class EnemyClass {
         enemyCollisionBox.setEmpty();
         gamecounter.incrementScore(500);
         gamecounter.decrementEnemies();
+
     }
 
     private void playExplosionAnimation() {
