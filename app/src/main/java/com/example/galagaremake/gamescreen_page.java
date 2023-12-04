@@ -142,7 +142,11 @@ public class gamescreen_page extends AppCompatActivity {
 
                     handler.postDelayed(new Runnable() {
                         public void run() {
-                            if(alreadyRan) {
+                            if (gameCounter.isGameOver()) {
+                                
+
+                            }
+                            if(alreadyRan && !gameCounter.isGameOver()) {
                                 Log.d("RANIT","RAN");
                                 int myIndex;
                                 do {

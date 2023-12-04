@@ -11,6 +11,7 @@ import org.w3c.dom.Text;
 
 public class GameCounters extends AppCompatActivity {
     private final Context context;
+    boolean isGameOver;
     private int lives;
     private int round;
     private int score;
@@ -26,7 +27,7 @@ public class GameCounters extends AppCompatActivity {
         this.round = initialRounds;
         this.score = initialScore;
         this.enemies = initialEnemies;
-
+        this.isGameOver = false;
         this.context = context;
 
         this.livesCounterTextView = ((Activity) context).findViewById(R.id.livesCounter);
@@ -43,6 +44,7 @@ public class GameCounters extends AppCompatActivity {
             lives--;
             updateLivesCounterTextView();
         } else{
+            isGameOver = true;
             if (context != null){
 
                 Intent intent = new Intent(context, gameover.class);
@@ -99,5 +101,8 @@ public class GameCounters extends AppCompatActivity {
         }
     }
 
+    public boolean isGameOver() {
+        return isGameOver;
+    }
 }
 
