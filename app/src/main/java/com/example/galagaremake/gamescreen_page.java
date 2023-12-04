@@ -139,7 +139,7 @@ public class gamescreen_page extends AppCompatActivity {
                     enemyArray[9] = Myenemy10;
                     alreadyRan = true;
                     final Handler handler = new Handler();
-                    final int delay = 500; // delay for repeating
+                    final int delay = 1000; // delay for repeating
 
                     handler.postDelayed(new Runnable() {
                         public void run() {
@@ -160,7 +160,7 @@ public class gamescreen_page extends AppCompatActivity {
                                 handler.postDelayed(this, delay);
                             }
                         }
-                    }, delay);
+                    }, (delay));
 
                 }
                 if (gameCounter.getEnemies() == 0) {

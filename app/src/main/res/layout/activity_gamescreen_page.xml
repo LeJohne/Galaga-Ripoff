@@ -209,7 +209,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy10"
@@ -219,7 +219,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy3"
@@ -229,7 +229,7 @@
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy6"
@@ -239,7 +239,7 @@
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy5"
@@ -249,7 +249,7 @@
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy2"
@@ -259,7 +259,7 @@
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy4"
@@ -269,7 +269,7 @@
         android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy7"
@@ -279,7 +279,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
     <ImageView
         android:id="@+id/enemy8"
@@ -289,7 +289,7 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1"/>
 
     <ImageView
         android:id="@+id/enemy9"
@@ -299,6 +299,6 @@
         android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scoreText"
-        app:srcCompat="@drawable/kisspng_galaga_galaxian_space_invaders_gaplus_playstation_space_invaders_5ac73b56cae536_9983283515230062948311" />
+        app:srcCompat="@drawable/alienship1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
