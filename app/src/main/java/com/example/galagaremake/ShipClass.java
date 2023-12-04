@@ -2,6 +2,7 @@ package com.example.galagaremake;
 
 import android.graphics.Rect;
 import android.graphics.drawable.AnimationDrawable;
+import android.opengl.Visibility;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -91,6 +92,7 @@ public class ShipClass {
             //rightText.setVisibility(View.INVISIBLE);
             //leftText.setVisibility(View.INVISIBLE);
         }
+        shipImage.setVisibility(View.VISIBLE);
         shipCollisionBox.set((int) shipImage.getX(), (int) shipImage.getY(), (int) shipImage.getX() + shipImage.getWidth(), (int) shipImage.getY() + shipImage.getHeight());
     }
 }

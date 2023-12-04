@@ -68,11 +68,12 @@ public class gamescreen_page extends AppCompatActivity {
     boolean noEnemies;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_gamescreen_page);
+
         Random r = new Random();
         screenHeight = getWindowManager().getDefaultDisplay().getHeight();
-        super.onCreate(savedInstanceState);
         bulletImage = findViewById(R.id.bullet);
-        setContentView(R.layout.activity_gamescreen_page);
 
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);

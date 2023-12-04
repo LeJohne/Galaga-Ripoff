@@ -64,7 +64,12 @@ public class BulletClass extends AppCompatActivity {
                 this.bulletImage.setY(bulletY);
                 Log.d("mymessageU", String.valueOf(bulletY));
                 // Update collision box
-                this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                if(!endAnimation.get()){
+                    this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                } else{
+                    this.bulletCollisionBox.setEmpty();
+                }
+
                 // Refresh the view
                 for (int k = 0; k < enemyArray.length; k++) {
                     if (enemyArray[k] != null) {
@@ -72,6 +77,7 @@ public class BulletClass extends AppCompatActivity {
                             Log.d("YES", "WHOO");
                             enemyArray[k].removeWithExplosion();
                             this.bulletImage.setVisibility(View.GONE);
+                            this.bulletCollisionBox.setEmpty();
                             endAnimation.set(true);
                         }
                     }

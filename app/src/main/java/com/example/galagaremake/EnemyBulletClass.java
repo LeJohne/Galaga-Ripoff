@@ -78,7 +78,12 @@ public class EnemyBulletClass extends AppCompatActivity {
                 Log.d("bulletX",String.valueOf(bulletX));
 
                 // Update collision box
-                this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                if(!endAnimation.get()){
+                    this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
+                } else{
+                    this.bulletCollisionBox.setEmpty();
+                }
+
                 //this.bulletCollisionBox.set(-999999999,99999999999,9999999999,-999999999)
                 // Refresh the view
 
@@ -86,6 +91,7 @@ public class EnemyBulletClass extends AppCompatActivity {
                             Log.d("COLLISION", "WHOO");
                             ship.removeWithExplosion();
                             this.bulletImage.setVisibility(View.GONE);
+                            this.bulletCollisionBox.setEmpty();
                             endAnimation.set(true);
                         }
 
