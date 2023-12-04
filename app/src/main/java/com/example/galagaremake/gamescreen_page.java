@@ -113,7 +113,7 @@ public class gamescreen_page extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                      //gameCounter.decrementLives();
-
+                    Log.d("Numenemies",String.valueOf(gameCounter.getEnemies()));
                      bullet = new BulletClass((ImageView) findViewById(R.id.bullet), ship);
                 if (!alreadyRan) {
                     Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet1), gameCounter);
@@ -185,6 +185,7 @@ public class gamescreen_page extends AppCompatActivity {
                     enemyArray[7] = Myenemy8;
                     enemyArray[8] = Myenemy9;
                     enemyArray[9] = Myenemy10;
+                    gameCounter.setEnemies(10);
                 }
                 bullet.move(screenHeight, enemyArray);
 

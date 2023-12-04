@@ -104,5 +104,9 @@ public class GameCounters extends AppCompatActivity {
     public boolean isGameOver() {
         return isGameOver;
     }
+
+    public void setEnemies(int i) {
+        enemies = i;
+    }
 }
 

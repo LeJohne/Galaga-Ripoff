@@ -41,7 +41,7 @@ public class EnemyBulletClass extends AppCompatActivity {
 
         this.bulletImage.setX(bulletX);
         this.bulletImage.setY(bulletY);
-        //this.bulletImage.setVisibility(View.INVISIBLE);
+        this.bulletImage.setVisibility(View.INVISIBLE);
         this.bulletCollisionBox = new Rect(bulletImage.getWidth(), bulletImage.getHeight(), bulletImage.getWidth(), bulletImage.getHeight());
         this.bulletCollisionBox.set((int) bulletImage.getX(), (int) bulletImage.getY(), (int) bulletImage.getX() + bulletImage.getWidth(), (int) bulletImage.getY() + bulletImage.getHeight());
     }
@@ -63,12 +63,12 @@ public class EnemyBulletClass extends AppCompatActivity {
         //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
         AtomicBoolean endAnimation = new AtomicBoolean(false);
         Log.d("mymessageB", String.valueOf(bulletY));
-        while((i < (screenHeight/20)) && !endAnimation.get()) {
+        while((i < (screenHeight/20)+10) && !endAnimation.get()) {
 
 
 
             ValueAnimator animator1 = ValueAnimator.ofFloat(bulletY, (i*20));
-            animator1.setDuration(300);
+            animator1.setDuration(800);
             animator1.setInterpolator(new LinearInterpolator());
             animator1.addUpdateListener(animation -> {
                 float animatedValue = (float) animation.getAnimatedValue();

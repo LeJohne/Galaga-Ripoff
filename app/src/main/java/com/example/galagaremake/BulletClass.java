@@ -22,6 +22,8 @@ public class BulletClass extends AppCompatActivity {
     private ImageView bulletImage;
     private Rect bulletCollisionBox;
 
+    private ImageView shipView;
+
     //create a bullet class that will create a new imageview
     //and move it up the screen until it hits the top of the screen
     //or hits an enemy
@@ -32,6 +34,7 @@ public class BulletClass extends AppCompatActivity {
 
     public BulletClass(ImageView newBulletImage, ShipClass ship) {
         this.bulletImage = newBulletImage;
+        this.shipView = ship.shipImage;
         this.bulletX = (int) ship.getX() + (ship.getWidth() / 2);
         this.bulletY = (int) ship.getY() - ship.getHeight();
         this.bulletImage.setX(bulletX);
@@ -45,7 +48,13 @@ public class BulletClass extends AppCompatActivity {
         //rightText.setVisibility(View.VISIBLE);
         //leftText.setVisibility(View.VISIBLE);
         //int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
+        this.bulletX = (int) this.shipView.getX() + (shipView.getWidth() / 2);
 
+        Log.d("bulletXA", String.valueOf(bulletX));
+        this.bulletY = (int) this.shipView.getY() + shipView.getHeight();
+        this.bulletImage.setX(bulletX);
+        this.bulletImage.setY(bulletY);
+        this.bulletImage.setVisibility(View.VISIBLE);
         // Make the bullet move up the screen over the duration of 5 seconds
         int i = 0;
         //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
