@@ -25,6 +25,8 @@ public class EnemyBulletClass extends AppCompatActivity {
     private ImageView bulletImage;
     private Rect bulletCollisionBox;
 
+    private GameCounters gamecounter;
+
     //create a bullet class that will create a new imageview
     //and move it up the screen until it hits the top of the screen
     //or hits an enemy
@@ -33,9 +35,10 @@ public class EnemyBulletClass extends AppCompatActivity {
     //if it hits nothing, keep moving it up the screen
     //create a new bullet when the user taps the screen
 
-    public EnemyBulletClass(ImageView newBulletImage, ImageView enemyImage) {
+    public EnemyBulletClass(ImageView newBulletImage, ImageView enemyImage, GameCounters gamecounter) {
         this.bulletImage = newBulletImage;
         this.EnemyImage = enemyImage;
+        this.gamecounter = gamecounter;
         this.bulletX = (int) enemyImage.getX() + (EnemyImage.getWidth() / 2);
         this.bulletY = (int) enemyImage.getY() - EnemyImage.getHeight();
 
@@ -66,9 +69,8 @@ public class EnemyBulletClass extends AppCompatActivity {
         while((i < (screenHeight/20)+10) && !endAnimation.get()) {
 
 
-
             ValueAnimator animator1 = ValueAnimator.ofFloat(bulletY, (i*20));
-            animator1.setDuration(800);
+            animator1.setDuration(3000/gamecounter.getRounds());
             animator1.setInterpolator(new LinearInterpolator());
             animator1.addUpdateListener(animation -> {
                 float animatedValue = (float) animation.getAnimatedValue();
