@@ -42,7 +42,7 @@ public class EnemyClass {
         this.screenHeight = myHeight;
         this.BulletImage = bulletImage;
         this.gamecounter = gameCounter;;
-        this.myBullet = new EnemyBulletClass(BulletImage,this.enemyImage);
+        this.myBullet = new EnemyBulletClass(BulletImage,this.enemyImage, this.gamecounter);
         enemyX = (int) enemyImage.getX();
         enemyY = (int) enemyImage.getY();
         enemyImage.setVisibility(View.VISIBLE);
