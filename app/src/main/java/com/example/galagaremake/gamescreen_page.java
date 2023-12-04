@@ -111,6 +111,7 @@ public class gamescreen_page extends AppCompatActivity {
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                    // gameCounter.decrementLives();
 
                     bullet = new BulletClass((ImageView) findViewById(R.id.bullet), shipImage);
                 if (!alreadyRan) {

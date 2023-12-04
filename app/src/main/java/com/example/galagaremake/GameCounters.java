@@ -2,11 +2,15 @@ package com.example.galagaremake;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.w3c.dom.Text;
 
-public class GameCounters {
+public class GameCounters extends AppCompatActivity {
+    private final Context context;
     private int lives;
     private int round;
     private int score;
@@ -23,6 +27,8 @@ public class GameCounters {
         this.score = initialScore;
         this.enemies = initialEnemies;
 
+        this.context = context;
+
         this.livesCounterTextView = ((Activity) context).findViewById(R.id.livesCounter);
         this.roundCounterTextView = ((Activity) context).findViewById(R.id.roundCounter);
         this.scoreCounterTextView = ((Activity) context).findViewById(R.id.scoreCounter);
@@ -36,6 +42,12 @@ public class GameCounters {
         if (lives > 0){
             lives--;
             updateLivesCounterTextView();
+        } else{
+            if (context != null){
+
+                Intent intent = new Intent(context, gameover.class);
+                context.startActivity(intent);
+            }
         }
     }
 
