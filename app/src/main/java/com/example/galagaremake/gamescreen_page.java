@@ -39,9 +39,9 @@ public class gamescreen_page extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bulletImage = findViewById(R.id.bullet);
         setContentView(R.layout.activity_gamescreen_page);
 
+<<<<<<< Updated upstream
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -51,6 +51,14 @@ public class gamescreen_page extends AppCompatActivity {
             }
         });
 
+=======
+
+
+
+        bulletImage = findViewById(R.id.bullet);
+        Random r = new Random();
+        screenHeight = getWindowManager().getDefaultDisplay().getHeight();
+>>>>>>> Stashed changes
         // Initialize shipImage after setting the content view
         shipImage = findViewById(R.id.ship);
         rightText = findViewById(R.id.rotationRightText);
@@ -102,6 +110,93 @@ public class gamescreen_page extends AppCompatActivity {
 
             };
         }
+<<<<<<< Updated upstream
+=======
+
+        findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                     //gameCounter.decrementLives();
+
+                bullet = new BulletClass((ImageView) findViewById(R.id.bullet), ship);
+                if (!alreadyRan) {
+
+                    Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet1), gameCounter);
+                    Myenemy2 = new EnemyClass((ImageView) findViewById(R.id.enemy2), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet2), gameCounter);
+                    Myenemy3 = new EnemyClass((ImageView) findViewById(R.id.enemy3), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet3), gameCounter);
+                    Myenemy4 = new EnemyClass((ImageView) findViewById(R.id.enemy4), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet4), gameCounter);
+                    Myenemy5 = new EnemyClass((ImageView) findViewById(R.id.enemy5), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet5), gameCounter);
+                    Myenemy6 = new EnemyClass((ImageView) findViewById(R.id.enemy6), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet6), gameCounter);
+                    Myenemy7 = new EnemyClass((ImageView) findViewById(R.id.enemy7), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet7), gameCounter);
+                    Myenemy8 = new EnemyClass((ImageView) findViewById(R.id.enemy8), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet8), gameCounter);
+                    Myenemy9 = new EnemyClass((ImageView) findViewById(R.id.enemy9), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet9), gameCounter);
+                    Myenemy10 = new EnemyClass((ImageView) findViewById(R.id.enemy10), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet10), gameCounter);
+
+                    enemyArray[0] = Myenemy1;
+                    enemyArray[1] = Myenemy2;
+                    enemyArray[2] = Myenemy3;
+                    enemyArray[3] = Myenemy4;
+                    enemyArray[4] = Myenemy5;
+                    enemyArray[5] = Myenemy6;
+                    enemyArray[6] = Myenemy7;
+                    enemyArray[7] = Myenemy8;
+                    enemyArray[8] = Myenemy9;
+                    enemyArray[9] = Myenemy10;
+                    alreadyRan = true;
+                    final Handler handler = new Handler();
+                    final int delay = 500; // delay for repeating
+
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            if (gameCounter.isGameOver()) {
+                                //stop this class from ever running again
+                                handler.removeCallbacks(this);
+                                finish();
+                            }
+                            if(alreadyRan && !gameCounter.isGameOver()) {
+                                Log.d("RANIT","RAN");
+                                int myIndex;
+                                do {
+                                    myIndex = r.nextInt(10);
+                                } while(enemyArray[myIndex] == null);
+                                enemyArray[myIndex].myBullet.shoot(screenHeight, ship);
+
+                                handler.postDelayed(this, delay);
+                            }
+                        }
+                    }, delay);
+
+                }
+                if (gameCounter.getEnemies() == 0) {
+                    Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet1), gameCounter);
+                    Myenemy2 = new EnemyClass((ImageView) findViewById(R.id.enemy2), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet2), gameCounter);
+                    Myenemy3 = new EnemyClass((ImageView) findViewById(R.id.enemy3), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet3), gameCounter);
+                    Myenemy4 = new EnemyClass((ImageView) findViewById(R.id.enemy4), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet4), gameCounter);
+                    Myenemy5 = new EnemyClass((ImageView) findViewById(R.id.enemy5), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet5), gameCounter);
+                    Myenemy6 = new EnemyClass((ImageView) findViewById(R.id.enemy6), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet6), gameCounter);
+                    Myenemy7 = new EnemyClass((ImageView) findViewById(R.id.enemy7), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet7), gameCounter);
+                    Myenemy8 = new EnemyClass((ImageView) findViewById(R.id.enemy8), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet8), gameCounter);
+                    Myenemy9 = new EnemyClass((ImageView) findViewById(R.id.enemy9), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet9), gameCounter);
+                    Myenemy10 = new EnemyClass((ImageView) findViewById(R.id.enemy10), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet10), gameCounter);
+
+                    enemyArray[0] = Myenemy1;
+                    enemyArray[1] = Myenemy2;
+                    enemyArray[2] = Myenemy3;
+                    enemyArray[3] = Myenemy4;
+                    enemyArray[4] = Myenemy5;
+                    enemyArray[5] = Myenemy6;
+                    enemyArray[6] = Myenemy7;
+                    enemyArray[7] = Myenemy8;
+                    enemyArray[8] = Myenemy9;
+                    enemyArray[9] = Myenemy10;
+                }
+                bullet.move(screenHeight, enemyArray, ship);
+
+                }
+
+        });
+
+>>>>>>> Stashed changes
     }
 
     @Override
