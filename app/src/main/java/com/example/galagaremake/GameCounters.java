@@ -46,6 +46,7 @@ public class GameCounters extends AppCompatActivity {
             if (context != null){
 
                 Intent intent = new Intent(context, gameover.class);
+                intent.putExtra("score", getScore());
                 context.startActivity(intent);
             }
         }
