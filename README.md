@@ -18,8 +18,8 @@
 # ------------------------------------------------
 # INCASE OF ERRORS
 # ------------------------------------------------
-# If the project doesnt build, probably is an issue with the local properties folder
+# If the project doesn't build, probably is an issue with the local properties folder
 # Go into the folder with all the project contents
 # Create a local properties file with the following 
 # sdk.dir=C\:\\Users\\USER_NAME\\AppData\\Local\\Android\\Sdk
-# or which ever the directory of the project folder is in
+# or whichever the directory of the project folder is in
