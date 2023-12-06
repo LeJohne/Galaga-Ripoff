@@ -20,24 +20,18 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class EnemyClass {
     public int enemyX;
     public int enemyY;
-
-
     private ImageView enemyImage;
     public Rect enemyCollisionBox;
-
     private ImageView BulletImage;
-
     private ShipClass ship;
-
     int screenHeight;
-
     public EnemyBulletClass myBullet;
-
     private boolean isReal;
-
     public int timesRun = 0;
 
     GameCounters gamecounter;
+
+    //CREATE IMAGE VIEW OF THE ENEMY SPACESHIPS
 
     public EnemyClass(ImageView enemyImage,int myHeight, ShipClass ship, ImageView bulletImage, GameCounters gameCounter) {
         this.enemyImage = enemyImage;
@@ -51,13 +45,6 @@ public class EnemyClass {
         enemyImage.setVisibility(View.VISIBLE);
         enemyCollisionBox = new Rect(enemyImage.getWidth(), enemyImage.getHeight(), enemyImage.getWidth(), enemyImage.getHeight());
         enemyCollisionBox.set((int) enemyImage.getX(), (int) enemyImage.getY(), (int) enemyImage.getX() + enemyImage.getWidth(), (int) enemyImage.getY() + enemyImage.getHeight());
-//        new Timer().scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                EnemyBulletClass.move(screenHeight,ship);
-//            }
-//        }, 0, 1000);//put here time 1000 milliseconds=1 second
-
 
     }
 
@@ -67,11 +54,11 @@ public class EnemyClass {
         enemyCollisionBox.set((int) enemyImage.getX(), (int) enemyImage.getY(), (int) enemyImage.getX() + enemyImage.getWidth(), (int) enemyImage.getY() - enemyImage.getHeight());
     }
 
-
     public void remove() {
         enemyImage.setVisibility(View.GONE);
-
     }
+
+    //EXPLOSION ANIMATION FOR THE ENEMIES
     public boolean isReal() {
         return isReal;
     }

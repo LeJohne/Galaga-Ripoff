@@ -20,11 +20,13 @@ public class options_page extends AppCompatActivity {
 //    music = MediaPlayer.create(this, R.raw.galagasound_select);
     // music.setLooping(true);
 
+    //SETS THE VIEW TO ACTIVITY OPTIONS PAGE
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_options_page);
 
+        //IF YOU CLICK ON THE BACK BUTTON IT SETS THE VIEW BACK TO HOME SCREEN PAGE
         findViewById(R.id.backButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -32,6 +34,7 @@ public class options_page extends AppCompatActivity {
             }
         });
 
+        //TRIED TO IMPLEMENT SOUND EFFECTS - GAVE UP :(
 //        findViewById(R.id.soundFxSw).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -40,6 +43,4 @@ public class options_page extends AppCompatActivity {
 //        });
 
     }
-
-
 }

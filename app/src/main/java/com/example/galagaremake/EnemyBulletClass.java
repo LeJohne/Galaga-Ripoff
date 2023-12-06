@@ -16,10 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class EnemyBulletClass extends AppCompatActivity {
-
     private float bulletX;
     private float bulletY;
-
     private ImageView EnemyImage;
     private float enemyY;
     private ImageView bulletImage;
@@ -27,13 +25,13 @@ public class EnemyBulletClass extends AppCompatActivity {
 
     private GameCounters gamecounter;
 
-    //create a bullet class that will create a new imageview
-    //and move it up the screen until it hits the top of the screen
-    //or hits an enemy
-    //if it hits an enemy, remove the enemy and the bullet
-    //if it hits the top of the screen, remove the bullet
-    //if it hits nothing, keep moving it up the screen
-    //create a new bullet when the user taps the screen
+    //CREATE A BULLET CLASS THAT WILL CREATE A NEW IMAGEVIEW
+    //AND MOVE IT UP THE SCREEN UNTIL IT HITS THE BOTTOM OF THE SCREEN
+    //OR HITS THE SHIP
+    //IF IT HITS AN ENEMY, REMOVE A LIVE AND THE BULLET
+    //IF IT HITS THE BOTTOM OF THE SCREEN, REMOVE THE BULLET
+    //IF IT HITS NOTHING, KEEP IT DOWN UP THE SCREEN
+    //CREATE A NEW BULLET AT RANDOM
 
     public EnemyBulletClass(ImageView newBulletImage, ImageView enemyImage, GameCounters gamecounter) {
         this.bulletImage = newBulletImage;
@@ -50,8 +48,6 @@ public class EnemyBulletClass extends AppCompatActivity {
     }
 
     public void shoot(int screenHeight, ShipClass ship) {
-        //rightText.setVisibility(View.VISIBLE);
-        //leftText.setVisibility(View.VISIBLE);
         //int screenHeight = getWindowManager().getDefaultDisplay().getHeight();
 
         // Make the bullet move up the screen over the duration of 5 seconds
@@ -63,7 +59,6 @@ public class EnemyBulletClass extends AppCompatActivity {
         this.bulletImage.setY(bulletY);
         this.bulletImage.setVisibility(View.VISIBLE);
         int i = 0;
-        //Log.d("mymessageE",String.valueOf(myenemy.enemyY));
         AtomicBoolean endAnimation = new AtomicBoolean(false);
         Log.d("mymessageB", String.valueOf(bulletY));
         while((i < (screenHeight/20)+10) && !endAnimation.get()) {
@@ -86,7 +81,6 @@ public class EnemyBulletClass extends AppCompatActivity {
                     this.bulletCollisionBox.setEmpty();
                 }
 
-                //this.bulletCollisionBox.set(-999999999,99999999999,9999999999,-999999999)
                 // Refresh the view
 
                         if (intersects(this.bulletCollisionBox, ship.shipCollisionBox)) {
@@ -116,31 +110,6 @@ public class EnemyBulletClass extends AppCompatActivity {
 
         this.bulletImage.requestLayout();
         Log.d("mymessageFINAL",String.valueOf(bulletImage.getY()));
-    /*
-        if(!endAnimation.get()) {
-        ValueAnimator animator = ValueAnimator.ofFloat(bulletY, -20);
-        animator.setDuration(600);
-        animator.setInterpolator(new LinearInterpolator());
-        animator.addUpdateListener(animation -> {
-            float animatedValue = (float) animation.getAnimatedValue();
-            this.bulletImage.setY(animatedValue);
-
-            // Update collision box or any other related calculations here
-
-            // Refresh the view
-            this.bulletImage.requestLayout();
-        });
-        animator.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                bulletImage.setVisibility(View.INVISIBLE);
-
-            }
-        });
-        animator.start();
-     }
-
-     */
     }
 
 

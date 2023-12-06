@@ -8,13 +8,16 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 
+//JAVA CLASS FOR THE HOME SCREEN
 public class MainActivity extends AppCompatActivity {
 
+    //SETS THE VIEW ON THE HOME SCREEN PAGE
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homescreen_page);
 
+        //IF YOU CLICK ON THE PLAY BUTTON, SETS THE VIEW TO GAME SCREEN PAGE
         findViewById(R.id.playButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //IF YOU CLICK ON THE OPTIONS BUTTON, SETS THE VIEW TO OPTION SCREEN PAGE
         findViewById(R.id.optionsButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //IF YOU CLICK ON EXIT PLAY BUTTON, IT KILLS THE PROGRAM / PROCESS
         findViewById(R.id.exitButton).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -37,7 +42,5 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(1);
             }
         });
-
-
     }
 }

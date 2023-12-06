@@ -18,16 +18,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.Random;
 
-
-
+//CREATE GAME SCREEN CLASS
 public class gamescreen_page extends AppCompatActivity {
-
     private SensorManager sensorManager;
     private Sensor rotationVectorSensor;
     private SensorEventListener rotationListener;
-
     private boolean startFlag = false;
-
     private ImageView shipImage;
     private GameCounters gameCounter;
     public ImageView bulletImage;
@@ -46,9 +42,7 @@ public class gamescreen_page extends AppCompatActivity {
 
     public ImageView enemy1Image;
     private BulletClass bullet;
-
     private ShipClass ship;
-
     private EnemyClass Myenemy1;
     private EnemyClass Myenemy2;
     private EnemyClass Myenemy3;
@@ -59,9 +53,7 @@ public class gamescreen_page extends AppCompatActivity {
     private EnemyClass Myenemy8;
     private EnemyClass Myenemy9;
     private EnemyClass Myenemy10;
-
     public boolean alreadyRan = false;
-
     private EnemyClass[] enemyArray = new EnemyClass[10];
     int screenHeight;
 
@@ -75,19 +67,16 @@ public class gamescreen_page extends AppCompatActivity {
         screenHeight = getWindowManager().getDefaultDisplay().getHeight();
         bulletImage = findViewById(R.id.bullet);
 
-        // Initialize shipImage after setting the content view
+        // INITIALIZE SHIPIMAGE AFTER SETTING THE CONTENT VIEW
         shipImage = findViewById(R.id.ship);
 
-        //rightText = findViewById(R.id.rotationRightText);
-        //leftText = findViewById(R.id.rotationLeftText);
-        //createEnemies();
-
-
-
+        //INITILIAZE GAME COUNTER WITH INITIAL 3 LIVES, ROUND 1, SCORE 0, 10 INITIAL ENEMIES, WITH
+        //THIS CONTEXT
         gameCounter = new GameCounters(3,1,0, 10, this);
         ship = new ShipClass(shipImage, gameCounter);
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 
+        //READS THE PHONES GYRO ORIENTATION
         if (sensorManager != null) {
             rotationVectorSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
             rotationListener = new SensorEventListener() {
@@ -106,13 +95,12 @@ public class gamescreen_page extends AppCompatActivity {
                     // Do something if accuracy changes
                 }
             };
-
         }
 
         findViewById(R.id.gameScreenLayout).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                     //gameCounter.decrementLives();
+                //FIRST CLICK ON THE SCREEN STARTS THE GAME & SHOOTS BULLET
                     Log.d("Numenemies",String.valueOf(gameCounter.getEnemies()));
                      bullet = new BulletClass((ImageView) findViewById(R.id.bullet), ship);
                 if (!alreadyRan) {
@@ -141,6 +129,7 @@ public class gamescreen_page extends AppCompatActivity {
                     final Handler handler = new Handler();
                     final int delay = 1000; // delay for repeating
 
+                    //CHECKS IF THE GAME IS OVER
                     handler.postDelayed(new Runnable() {
                         public void run() {
                             if (gameCounter.isGameOver()) {
@@ -163,6 +152,8 @@ public class gamescreen_page extends AppCompatActivity {
                     }, (delay));
 
                 }
+
+                //WHEN YOU KILL ALL THE ENEMIES, IT CREATES A NEW SET OF ENEMIES
                 if (gameCounter.getEnemies() == 0) {
                     Myenemy1 = new EnemyClass((ImageView) findViewById(R.id.enemy1), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet1), gameCounter);
                     Myenemy2 = new EnemyClass((ImageView) findViewById(R.id.enemy2), screenHeight, ship, (ImageView) findViewById(R.id.enemyBullet2), gameCounter);
@@ -190,29 +181,8 @@ public class gamescreen_page extends AppCompatActivity {
                 bullet.move(screenHeight, enemyArray);
 
                 }
-
         });
-
     }
-
-
-   /* private void createEnemies() {
-
-        enemyArray[0] = new EnemyClass((ImageView) findViewById(R.id.enemy1),screenHeight, ship, enemyBulletImage1);
-        enemyArray[1] = new EnemyClass((ImageView) findViewById(R.id.enemy2),screenHeight, ship, enemyBulletImage2);
-        enemyArray[2] = new EnemyClass((ImageView) findViewById(R.id.enemy3),screenHeight, ship, enemyBulletImage3);
-        enemyArray[3] = new EnemyClass((ImageView) findViewById(R.id.enemy4),screenHeight, ship, enemyBulletImage4);
-        enemyArray[4] = new EnemyClass((ImageView) findViewById(R.id.enemy5),screenHeight, ship, enemyBulletImage5);
-        enemyArray[5] = new EnemyClass((ImageView) findViewById(R.id.enemy6),screenHeight, ship, enemyBulletImage6);
-        enemyArray[6] = new EnemyClass((ImageView) findViewById(R.id.enemy7),screenHeight, ship, enemyBulletImage7);
-        enemyArray[7] = new EnemyClass((ImageView) findViewById(R.id.enemy8),screenHeight, ship, enemyBulletImage8);
-        enemyArray[8] = new EnemyClass((ImageView) findViewById(R.id.enemy9),screenHeight, ship, enemyBulletImage9);
-        enemyArray[9] = new EnemyClass((ImageView) findViewById(R.id.enemy10),screenHeight, ship, enemyBulletImage10);
-
-    }
-    */
-
-
 
     @Override
     protected void onResume() {
